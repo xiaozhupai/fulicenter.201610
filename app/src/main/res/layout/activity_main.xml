@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cn.ucai.fulicenter.controller.activity.MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linearLayout">
+
+        <RadioButton
+            style="@style/layout"
+            android:text="新品"
+            android:drawableTop="@mipmap/menu_item_new_good_normal"/>
+
+        <RadioButton
+            style="@style/layout"
+            android:text="精选"
+            android:drawableTop="@mipmap/boutique_normal" />
+
+        <RadioButton
+            style="@style/layout"
+            android:text="分类"
+            android:drawableTop="@mipmap/menu_item_category_normal" />
+
+        <RadioButton
+            style="@style/layout"
+            android:text="购物车"
+            android:drawableTop="@mipmap/menu_item_cart_normal" />
+
+        <RadioButton
+            style="@style/layout"
+            android:text="我"
+            android:drawableTop="@drawable/selector_menu_item_personal_center" />
+    </LinearLayout>
+    </RadioGroup>
 </RelativeLayout>
