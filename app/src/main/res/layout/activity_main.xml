@@ -4,10 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,28 +14,45 @@
 
         <RadioButton
             style="@style/layout"
+            android:textColor="@color/main_botton_text_color"
+            android:checked="true"
+            android:id="@+id/rbNewGoods"
             android:text="新品"
-            android:drawableTop="@mipmap/menu_item_new_good_normal"/>
+            android:drawableTop="@drawable/selector_menu_item_new_good"/>
 
         <RadioButton
             style="@style/layout"
+            android:textColor="@color/main_botton_text_color"
+            android:checked="false"
+            android:id="@+id/rbBoutique"
             android:text="精选"
-            android:drawableTop="@mipmap/boutique_normal" />
+            android:drawableTop="@drawable/selector_menu_item_boutique" />
 
         <RadioButton
             style="@style/layout"
+            android:textColor="@color/main_botton_text_color"
+            android:checked="false"
+            android:id="@+id/rbCategory"
             android:text="分类"
-            android:drawableTop="@mipmap/menu_item_category_normal" />
+            android:drawableTop="@drawable/selector_menu_item_category" />
 
         <RadioButton
             style="@style/layout"
+            android:textColor="@color/main_botton_text_color"
+            android:checked="false"
+            android:id="@+id/rbCart"
             android:text="购物车"
-            android:drawableTop="@mipmap/menu_item_cart_normal" />
+            android:drawableTop="@drawable/selector_menu_item_cart" />
 
         <RadioButton
             style="@style/layout"
+            android:textColor="@color/main_botton_text_color"
+            android:checked="false"
+            android:id="@+id/rbPersonalCenter"
             android:text="我"
             android:drawableTop="@drawable/selector_menu_item_personal_center" />
     </LinearLayout>
-    </RadioGroup>
+
+
 </RelativeLayout>
+
