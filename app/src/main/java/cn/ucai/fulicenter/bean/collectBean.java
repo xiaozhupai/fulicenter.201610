@@ -1,19 +1,18 @@
 package cn.ucai.fulicenter.bean;
 
-/**
- * Created by Administrator on 2017/1/9.
- */
+import java.io.Serializable;
 
-public class collectBean {
+public class CollectBean implements Serializable {
+
     /**
-     * id : 2130
-     * userName : a123456
+     * id : 7672
+     * userName : 7672
      * goodsId : 7672
      * goodsName : 趣味煮蛋模具
      * goodsEnglishName : Kotobuki
-     * goodsThumb : 201509/thumb_img/7672_thumb_G_1442389445719.jpg
-     * goodsImg : 201509/thumb_img/7672_thumb_G_1442389445719.jpg
-     * addTime : 1476820611547
+     * goodsThumb : http:121.197.1.20/images/201507/thumb_img/6372_thumb_G_1437108490316.jpg
+     * goodsImg : http:121.197.1.20/images/201507/1437108490034171398.jpg
+     * addTime : 1442419200000
      */
 
     private int id;
@@ -87,5 +86,35 @@ public class collectBean {
 
     public void setAddTime(long addTime) {
         this.addTime = addTime;
+    }
+
+    @Override
+    public String toString() {
+        return "CollectBean{" +
+                "id=" + id +
+                ", userName=" + userName +
+                ", goodsId=" + goodsId +
+                ", goodsName='" + goodsName + '\'' +
+                ", goodsEnglishName='" + goodsEnglishName + '\'' +
+                ", goodsThumb='" + goodsThumb + '\'' +
+                ", goodsImg='" + goodsImg + '\'' +
+                ", addTime=" + addTime +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CollectBean)) return false;
+
+        CollectBean that = (CollectBean) o;
+
+        return getGoodsId() == that.getGoodsId();
+
+    }
+
+    @Override
+    public int hashCode() {
+        return getGoodsId();
     }
 }
