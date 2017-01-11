@@ -8,7 +8,7 @@ import android.app.Application;
 
 public class FulicenterApplication extends Application {
     private static FulicenterApplication instance;
-    public FulicenterApplication getInstance(){
+    public static  FulicenterApplication getInstance(){
         return instance;
     }
 

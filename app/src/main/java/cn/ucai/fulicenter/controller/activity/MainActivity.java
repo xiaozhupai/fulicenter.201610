@@ -8,11 +8,12 @@ import android.widget.RadioButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.ucai.fulicenter.R;
+import cn.ucai.fulicenter.controller.fragment.NewGoodsFragment;
 
 public class MainActivity extends AppCompatActivity {
     int index, currentIndex;
-
     RadioButton[] rbs = new RadioButton[5];
+
     @BindView(R.id.rbNewGoods)
     RadioButton rbNewGoods;
     @BindView(R.id.rbBoutique)
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         rbs[2] = rbCategory;
         rbs[3] = rbCart;
         rbs[4] = rbPersonalCenter;
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container,new NewGoodsFragment())
+                .commit();
     }
 
     public void onCheckedChange(View view) {
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 index = 4;
                 break;
         }
+
         if (index != currentIndex) {
             setRadioStatus();
         }
