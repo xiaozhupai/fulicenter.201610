@@ -6,9 +6,32 @@
     android:layout_height="match_parent"
     tools:context="cn.ucai.fulicenter.controller.activity.BoutiqueChildActivity">
 
+    <RelativeLayout
+        android:id="@+id/rvLayout"
+        android:background="@color/good_detail_title_bg"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/ivBack"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/back"
+            />
+        <TextView
+            android:id="@+id/tvCommonTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="title"
+            android:layout_toRightOf="@id/ivBack"
+            android:gravity="center_vertical"
+            />
+    </RelativeLayout>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_below="@+id/rvLayout"
+         />
 </RelativeLayout>
