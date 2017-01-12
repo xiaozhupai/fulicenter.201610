@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.ucai.fulicenter.R;
 import cn.ucai.fulicenter.application.I;
 import cn.ucai.fulicenter.model.bean.NewGoodsBean;
 import cn.ucai.fulicenter.model.utils.ImageLoader;
 import cn.ucai.fulicenter.view.FooterViewHolder;
+import cn.ucai.fulicenter.view.MFGT;
 
 /**
  * Created by Administrator on 2017/1/11.
@@ -55,7 +55,7 @@ public class GoodsAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (getItemViewType(position)==I.TYPE_FOOTER){
             FooterViewHolder vh= (FooterViewHolder) holder;
             vh.setFooterString(mContext.getString(getFooterString()));
@@ -64,6 +64,12 @@ public class GoodsAdapter extends RecyclerView.Adapter {
             ImageLoader.downloadImg(mContext, vh.ivGoodsThumb, mList.get(position).getGoodsThumb());
             vh.tvGoodsName.setText(mList.get(position).getGoodsName());
             vh.tvGoodsPrice.setText(mList.get(position).getCurrencyPrice());
+            vh.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MFGT.gotoGoodsDetail(mContext,mList.get(position).getGoodsId());
+                }
+            });
         }
     }
 
