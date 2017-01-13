@@ -1,5 +1,6 @@
 package cn.ucai.fulicenter.controller.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -7,11 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.ucai.fulicenter.R;
 import cn.ucai.fulicenter.application.I;
 import cn.ucai.fulicenter.model.bean.NewGoodsBean;
 import cn.ucai.fulicenter.model.utils.ImageLoader;
@@ -64,15 +68,9 @@ public class GoodsAdapter extends RecyclerView.Adapter {
             ImageLoader.downloadImg(mContext, vh.ivGoodsThumb, mList.get(position).getGoodsThumb());
             vh.tvGoodsName.setText(mList.get(position).getGoodsName());
             vh.tvGoodsPrice.setText(mList.get(position).getCurrencyPrice());
-            vh.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MFGT.gotoGoodsDetail(mContext,mList.get(position).getGoodsId());
-                }
-            });
+            vh.itemView.setTag(position);
         }
     }
-
     @Override
     public int getItemViewType(int position) {
         if (position == getItemCount() - 1) {
@@ -103,15 +101,19 @@ public class GoodsAdapter extends RecyclerView.Adapter {
         return isMore?R.string.load_more:R.string.no_more;
     }
 
-    static class GoodsViewHolder extends RecyclerView.ViewHolder {
+    class GoodsViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.ivGoodsThumb)
         ImageView ivGoodsThumb;
         @BindView(R.id.tvGoodsName)
         TextView tvGoodsName;
         @BindView(R.id.tvGoodsPrice)
         TextView tvGoodsPrice;
-        @BindView(R.id.layout_goods)
-        LinearLayout layoutGoods;
+
+        @OnClick(R.id.layout_goods)
+        public void onItemClick(View view){
+            int position= (int) view.getTag();
+            MFGT.gotoGoodsDetails((Activity) mContext,mList.get(position).getGoodsId());
+        }
 
         GoodsViewHolder(View view) {
             super(view);

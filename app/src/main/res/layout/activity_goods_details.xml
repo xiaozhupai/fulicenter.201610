@@ -11,27 +11,7 @@
         android:id="@+id/layout_title"
         android:background="@color/main_orange"
         >
-        <RelativeLayout
-            android:id="@+id/rvLayout"
-            android:background="@color/good_detail_title_bg"
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-            <ImageView
-                android:layout_centerVertical="true"
-                android:id="@+id/ivBackClickArea"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/back"
-                />
-            <TextView
-                android:id="@+id/tvCommonTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="title"
-                android:layout_toRightOf="@id/ivBackClickArea"
-                android:gravity="center_vertical"
-                />
-         </RelativeLayout>
+        <include layout="@layout/common_title"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -128,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/indicator"
-                app:cout="4"
+                app:count="4"
                 app:focus="0"
                 app:focus_color="@color/good_detaul_flow_indicator_focus"
                 app:normal_color="#a1d1d1d1"
@@ -144,7 +124,5 @@
             android:layout_margin="10dp"
             android:background="@color/good_detail_bg_white"
             />
-
-
     </RelativeLayout>
 </RelativeLayout>

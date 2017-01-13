@@ -38,9 +38,9 @@ public class MFGT {
         intent.putExtra(I.Boutique.NAME,boutiqueBean.getTitle());
         startActivity((Activity)mContext,intent);
     }
-    public static void gotoGoodsDetail(Context mContext, int goodId) {
+    public static void gotoGoodsDetails(Activity mContext, int goodId) {
         Intent intent=new Intent(mContext, GoodsDetailsActivity.class);
         intent.putExtra(I.GoodsDetails.KEY_GOODS_ID,goodId);
-        startActivity((Activity)mContext,intent);
+        startActivity(mContext,intent);
     }
 }

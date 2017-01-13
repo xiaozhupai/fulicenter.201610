@@ -8,6 +8,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.ucai.fulicenter.R;
 import cn.ucai.fulicenter.application.I;
 import cn.ucai.fulicenter.model.bean.AlbumsBean;
 import cn.ucai.fulicenter.model.bean.GoodsDetailsBean;
@@ -43,7 +44,7 @@ public class GoodsDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_details);
         ButterKnife.bind(this);
-        goodsId = getIntent().getIntExtra(I.GoodsDetails.KEY_GOODS_NAME, 0);
+        goodsId = getIntent().getIntExtra(I.GoodsDetails.KEY_GOODS_ID, 0);
         if (goodsId == 0) {
             MFGT.finish(this);
         } else {
@@ -101,7 +102,7 @@ public class GoodsDetailsActivity extends AppCompatActivity {
         return new String[0];
     }
 
-    @OnClick(R.id.ivBackClickArea)
+    @OnClick(R.id.backOnClickArea)
     public void onClick() {
         MFGT.finish(this);
     }
