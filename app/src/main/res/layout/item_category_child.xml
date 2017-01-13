@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:id="@+id/layout_category_child"
+    android:background="@drawable/divide_explist_child"
+    >
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/nopic"
+        android:id="@+id/iv_category_child_thumb"
+        android:layout_marginLeft="40dp"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:background="#F4F4F4"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_category_child_name"
+        android:text="鞋子"
+        android:textSize="18dp"
+        android:textColor="#000"
+        android:layout_toRightOf="@id/iv_category_child_thumb"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"
+        />
+</RelativeLayout>
