@@ -11,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -98,7 +101,38 @@ public class GoodsAdapter extends RecyclerView.Adapter {
     }
 
     public int getFooterString() {
+
         return isMore?R.string.load_more:R.string.no_more;
+    }
+
+    public void sortGoods(final int sortBy){
+        Collections.sort(mList, new Comparator<NewGoodsBean>() {
+            @Override
+            public int compare(NewGoodsBean leftBean, NewGoodsBean rightBean) {
+                int result=0;
+                switch (sortBy){
+                    case I.SORT_BY_ADDTIME_ASC:
+                        result= (int) (leftBean.getAddTime()-rightBean.getAddTime());
+                        break;
+                    case I.SORT_BY_ADDTIME_DESC:
+                        result= (int) (rightBean.getAddTime()-leftBean.getAddTime());
+                        break;
+                    case I.SORT_BY_PRICE_ASC:
+                        result=getPrice(leftBean.getCurrencyPrice())-getPrice(rightBean.getCurrencyPrice());
+                        break;
+                    case I.SORT_BY_PRICE_DESC:
+                        result=getPrice(rightBean.getCurrencyPrice())-getPrice(leftBean.getCurrencyPrice());
+                        break;
+                }
+                return result;
+            }
+        });
+        notifyDataSetChanged();
+    }
+    int getPrice(String price){
+        int p=0;
+        p=Integer.valueOf(price.substring(price.indexOf("￥")+1));
+        return p;
     }
 
     class GoodsViewHolder extends RecyclerView.ViewHolder {
