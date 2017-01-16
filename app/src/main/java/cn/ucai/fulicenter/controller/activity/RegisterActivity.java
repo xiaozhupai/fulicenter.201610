@@ -4,9 +4,9 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +24,7 @@ import cn.ucai.fulicenter.view.MFGT;
  * Created by Administrator on 2017/1/16.
  */
 public class RegisterActivity extends AppCompatActivity {
+    private static final String TAG=LoginActivity.class.getSimpleName();
     @BindView(R.id.userName)
     EditText userName;
     @BindView(R.id.userNick)
@@ -67,17 +68,21 @@ public class RegisterActivity extends AppCompatActivity {
             userName.requestFocus();
 
         }else if (TextUtils.isEmpty(usernick)){
-            userName.setError(getResources().getString(R.string.nick_name_connot_be_empty));
-            userName.requestFocus();
+            userNick.setError(getResources().getString(R.string.nick_name_connot_be_empty));
+            userNick.requestFocus();
 
         }else if (TextUtils.isEmpty(password)){
-            userName.setError(getResources().getString(R.string.password_connot_be_empty));
-            userName.requestFocus();
+            userPassword.setError(getResources().getString(R.string.password_connot_be_empty));
+            userPassword.requestFocus();
 
         }else if (TextUtils.isEmpty(confirmpassword)){
-            userName.setError(getResources().getString(R.string.two_input_password));
-            userName.requestFocus();
-        }else {
+            confirmPassword.setError(getResources().getString(R.string.confirm_password_connot_be_empty));
+            confirmPassword.requestFocus();
+        }else if (!password.equals(confirmpassword)){
+            confirmPassword.setError(getResources().getString(R.string.two_input_password));
+            confirmPassword.requestFocus();
+        }
+        else {
             register(username,usernick,password);
         }
     }
@@ -91,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onSuccess(String s) {
                 if (s!=null){
                     Result result= ResultUtils.getResultFromJson(s,Result.class);
+                    Log.e(TAG,"result"+result);
                     if (result!=null){
                         if (result.isRetMsg()){
                             CommonUtils.showLongToast(R.string.register_success);
@@ -100,14 +106,14 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }else {
                         CommonUtils.showLongToast(R.string.register_fail);
-
                     }
                 }
                 dialog.dismiss();
             }
             @Override
             public void onError(String error) {
-
+                dialog.dismiss();
+                CommonUtils.showLongToast(error);
             }
         });
     }

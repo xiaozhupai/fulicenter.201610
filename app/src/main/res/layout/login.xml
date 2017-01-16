@@ -11,17 +11,19 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:src="@drawable/back"
-        android:id="@+id/ivBack"
+        android:id="@+id/ivBackClickArea"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="账号登录"
+        android:textSize="20dp"
         android:gravity="center"
         android:layout_toRightOf="@id/ivBack"
         />
     </RelativeLayout>
     <EditText
+        android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="用户名："
@@ -33,6 +35,7 @@
         />
 
     <EditText
+        android:id="@+id/userPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="密码："
