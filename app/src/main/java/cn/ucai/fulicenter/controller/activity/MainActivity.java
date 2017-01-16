@@ -9,9 +9,11 @@ import android.widget.RadioButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.ucai.fulicenter.R;
+import cn.ucai.fulicenter.application.FulicenterApplication;
 import cn.ucai.fulicenter.controller.fragment.BoutiqueGoodsFragment;
 import cn.ucai.fulicenter.controller.fragment.CategoryFragment;
 import cn.ucai.fulicenter.controller.fragment.NewGoodsFragment;
+import cn.ucai.fulicenter.view.MFGT;
 
 public class MainActivity extends AppCompatActivity {
     int index, currentIndex;
@@ -79,7 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 index = 3;
                 break;
             case R.id.rbPersonalCenter:
-                index = 4;
+                if (FulicenterApplication.getUser()==null){
+                    MFGT.gotoLogin(this);
+                }else{
+                    index = 4;
+                }
                 break;
         }
         setFragment();
