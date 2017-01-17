@@ -4,17 +4,20 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import cn.ucai.fulicenter.model.utils.L;
+
 /**
  * Created by Administrator on 2017/1/17.
  */
 
 public class DBOpenHelper extends SQLiteOpenHelper {
+    private static final String TAG=DBOpenHelper.class.getSimpleName();
     private static final int DATABASE_VERISON=1;
     private static final String FULICENTER_USER_TABLE_CREATE=
         "CREATE TABLE " + UserDao.USER_TABLE_NAME + "("
         + UserDao.USER_COLUMN_NAME +" TEXT PRIMARY KEY, "
             +UserDao.USER_COLUMN_NICK+" TEXT, "
-            +UserDao.USER_COLUMN_AVATAR+ " INTEGER "
+            +UserDao.USER_COLUMN_AVATAR+ " INTEGER,"
             +UserDao.USER_COLUMN_AVATAR_PATH +" TEXT, "
             +UserDao.USER_COLUMN_AVATAR_SUFFIX +" TEXT, "
             +UserDao.USER_COLUMN_AVATAR_TYPE +" INTEGER, "
