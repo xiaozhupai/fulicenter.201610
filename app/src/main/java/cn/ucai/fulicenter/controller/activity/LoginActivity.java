@@ -17,11 +17,13 @@ import cn.ucai.fulicenter.R;
 import cn.ucai.fulicenter.application.I;
 import cn.ucai.fulicenter.model.bean.Result;
 import cn.ucai.fulicenter.model.bean.User;
+import cn.ucai.fulicenter.model.dao.UserDao;
 import cn.ucai.fulicenter.model.net.IModelUser;
 import cn.ucai.fulicenter.model.net.ModelUser;
 import cn.ucai.fulicenter.model.net.OnCompleteListener;
 import cn.ucai.fulicenter.model.net.SharedPreferenceUtils;
 import cn.ucai.fulicenter.model.utils.CommonUtils;
+import cn.ucai.fulicenter.model.utils.L;
 import cn.ucai.fulicenter.model.utils.ResultUtils;
 import cn.ucai.fulicenter.view.MFGT;
 
@@ -29,6 +31,7 @@ import cn.ucai.fulicenter.view.MFGT;
  * Created by Administrator on 2017/1/16.
  */
 public class LoginActivity extends AppCompatActivity {
+    private static final String TAG=LoginActivity.class.getSimpleName();
     @BindView(R.id.ivBackClickArea)
     ImageView ivBackClickArea;
     @BindView(R.id.btLogin)
@@ -80,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String username, String userpassword) {
+
         final ProgressDialog dialog=new ProgressDialog(this);
         dialog.setMessage(getString(R.string.logining));
         model = new ModelUser();
@@ -91,6 +95,8 @@ public class LoginActivity extends AppCompatActivity {
                     if (result != null) {
                         if (result.isRetMsg()) {
                             User user= (User) result.getRetData();
+                            boolean savaUser= UserDao.getInstance().saveUser(user);
+                            L.e(TAG,"savaUser=="+savaUser);
                             SharedPreferenceUtils.getInstance(LoginActivity.this).saveUser(user.getMuserName());
                             MFGT.finish(LoginActivity.this);
                         } else {
