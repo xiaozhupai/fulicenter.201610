@@ -1,5 +1,6 @@
 package cn.ucai.fulicenter.controller.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.ucai.fulicenter.R;
 import cn.ucai.fulicenter.application.FulicenterApplication;
+import cn.ucai.fulicenter.application.I;
 import cn.ucai.fulicenter.controller.fragment.BoutiqueGoodsFragment;
 import cn.ucai.fulicenter.controller.fragment.CategoryFragment;
 import cn.ucai.fulicenter.controller.fragment.NewGoodsFragment;
@@ -130,5 +132,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         currentIndex = index;
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        L.e(TAG,"onResume,index====>"+index+
+                "currentindex====="+currentIndex+
+                ",user===>"+FulicenterApplication.getInstance());
+        setRadioStatus();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        L.e(TAG,"onActivityResult,resultCode===>"+requestCode+",resultCode"+resultCode);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK && requestCode== I.REQUEST_CODE_LOGIN){
+            index=4;
+            setFragment();
+            setRadioStatus();
+        }
     }
 }

@@ -55,14 +55,14 @@ public class MFGT {
     }
 
     public static void gotoLogin(Activity context) {
-        startActivity(context,LoginActivity.class);
+        context.startActivityForResult(new Intent(context,LoginActivity.class),I.REQUEST_CODE_LOGIN);
     }
 
     public static void gotoRegister(LoginActivity loginActivity) {
         startActivity(loginActivity,RegisterActivity.class);
     }
 
-    public static void gotoSettings(FragmentActivity activity) {
+    public static void gotoSettings(Activity activity) {
         startActivity(activity, SettingActivity.class);
     }
 }

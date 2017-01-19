@@ -57,4 +57,6 @@ public class PersonalFragment extends Fragment {
     public void onClick() {
         MFGT.gotoSettings(getActivity());
     }
+
+
 }
