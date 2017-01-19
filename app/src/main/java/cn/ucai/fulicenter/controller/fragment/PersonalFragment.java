@@ -42,9 +42,10 @@ public class PersonalFragment extends Fragment {
         L.e(TAG, "user=====>>" + user);
         if (user != null) {
             loadUserInfo(user);
-        } else {
-            MFGT.gotoLogin(getActivity());
         }
+        /* else {
+            MFGT.gotoLogin(getActivity());
+        }*/
     }
 
     @Override
