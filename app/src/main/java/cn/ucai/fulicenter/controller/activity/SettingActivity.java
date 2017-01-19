@@ -1,7 +1,9 @@
 package cn.ucai.fulicenter.controller.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,6 +12,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.ucai.fulicenter.R;
 import cn.ucai.fulicenter.application.FulicenterApplication;
+import cn.ucai.fulicenter.application.I;
 import cn.ucai.fulicenter.model.bean.User;
 import cn.ucai.fulicenter.model.net.SharedPreferenceUtils;
 import cn.ucai.fulicenter.model.utils.ImageLoader;
@@ -51,11 +54,24 @@ public class SettingActivity extends AppCompatActivity {
         tvUserProfileNick.setText(user.getMuserNick());
     }
 
-    @OnClick(R. id.btn_logout)
+    @OnClick(R.id.btn_logout)
     public void logout() {
         FulicenterApplication.setUser(null);
         SharedPreferenceUtils.getInstance(this).removeUser();
         MFGT.gotoLogin(this);
         finish();
+    }
+
+    @OnClick(R.id.layout_user_profile_nickname)
+    public void updateNick() {
+        MFGT.gotoUpDataNick(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK && requestCode== I.REQUEST_CODE_NICK){
+            tvUserProfileNick.setText(FulicenterApplication.getUser().getMuserNick());
+        }
     }
 }

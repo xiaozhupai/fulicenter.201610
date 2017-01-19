@@ -47,6 +47,12 @@ public class PersonalFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+    }
+
     private void loadUserInfo(User user) {
         ImageLoader.downloadImg(getContext(), ivUserAvatar, user.getAvatarPath());
         tvUserName.setText(user.getMuserNick());

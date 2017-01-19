@@ -1,39 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/common_title"
     android:layout_width="match_parent"
     android:layout_height="35dp"
-    android:background="@color/orange"
-    android:id="@+id/common_title"
-    >
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/backOnClickArea"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:src="@drawable/back"
             android:layout_gravity="center_vertical"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/backOnClickArea"
-        android:paddingLeft="10dp"
-        >
-        <TextView
-            android:layout_centerVertical="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvTitle"
-            android:text="商品详情"
-            />
+            android:src="@drawable/back" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/backOnClickArea"
+        android:paddingLeft="10dp"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="商品详情" />
+    </LinearLayout>
 </RelativeLayout>
