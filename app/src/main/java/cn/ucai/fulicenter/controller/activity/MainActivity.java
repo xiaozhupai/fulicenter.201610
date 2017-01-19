@@ -104,16 +104,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFragment() {
         L.e(TAG,"setFragment,index====="+index);
+        L.e(TAG,"setFragment,currentindex====="+currentIndex);
+
         FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
         ft.hide(mFragment[currentIndex]);
         if (!mFragment[index].isAdded()){
             ft.add(R.id.fragment_container,mFragment[index]);
-        }else {
-            ft.show(mFragment[index]).commit();
         }
+            ft.show(mFragment[index]).commit();
+
 
        /* getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container,mFragment[index])
+                //.add(R.id.fragment_container,mFragment[index])
                 .show(mFragment[index])
                 .hide(mFragment[currentIndex])
                 .commit();*/

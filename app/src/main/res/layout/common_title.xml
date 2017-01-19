@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="35dp"
-    android:background="@color/orange">
+    android:background="@color/orange"
+    android:id="@+id/common_title"
+    >
 
     <LinearLayout
         android:id="@+id/backOnClickArea"
@@ -26,6 +28,7 @@
         android:paddingLeft="10dp"
         >
         <TextView
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvTitle"

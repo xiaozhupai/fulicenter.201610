@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.ucai.fulicenter.R;
 import cn.ucai.fulicenter.application.FulicenterApplication;
 import cn.ucai.fulicenter.model.bean.User;
 import cn.ucai.fulicenter.model.utils.ImageLoader;
+import cn.ucai.fulicenter.model.utils.L;
 import cn.ucai.fulicenter.view.MFGT;
 
 /**
@@ -27,12 +29,8 @@ public class PersonalFragment extends Fragment {
     @BindView(R.id.tv_user_name)
     TextView tvUserName;
 
-    public PersonalFragment() {
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_personal, container, false);
         ButterKnife.bind(this, layout);
         initData();
@@ -40,17 +38,23 @@ public class PersonalFragment extends Fragment {
     }
 
     private void initData() {
-        User user= FulicenterApplication.getUser();
-        if (user!=null){
+        User user = FulicenterApplication.getUser();
+        L.e(TAG, "user=====>>" + user);
+        if (user != null) {
             loadUserInfo(user);
-        }else {
+        } else {
             MFGT.gotoLogin(getActivity());
         }
     }
 
     private void loadUserInfo(User user) {
-        ImageLoader.downloadImg(getContext(),ivUserAvatar,user.getAvatarPath());
+        ImageLoader.downloadImg(getContext(), ivUserAvatar, user.getAvatarPath());
         tvUserName.setText(user.getMuserNick());
     }
 
+
+    @OnClick({R.id.tv_center_settings,R.id.center_user_info})
+    public void onClick() {
+        MFGT.gotoSettings(getActivity());
+    }
 }
