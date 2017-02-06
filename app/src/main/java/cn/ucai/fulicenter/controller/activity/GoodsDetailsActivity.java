@@ -126,13 +126,14 @@ public class GoodsDetailsActivity extends AppCompatActivity {
         initCollecStatus();
         setCollectStatus();
     }
+
     @OnClick(R.id.iv_good_collect)
-    public void setCollectListener(){
-        User user=FulicenterApplication.getUser();
-        if (user!=null){
+    public void setCollectListener() {
+        User user = FulicenterApplication.getUser();
+        if (user != null) {
             setCollect(user);
-            
-        }else {
+
+        } else {
             MFGT.gotoLogin(this);
         }
     }
@@ -143,8 +144,8 @@ public class GoodsDetailsActivity extends AppCompatActivity {
                 new OnCompleteListener<MessageBean>() {
                     @Override
                     public void onSuccess(MessageBean result) {
-                        if (result!=null && result.isSuccess()){
-                            isCollect=!isCollect;
+                        if (result != null && result.isSuccess()) {
+                            isCollect = !isCollect;
                             setCollectStatus();
                             CommonUtils.showLongToast(result.getMsg());
                         }
@@ -158,9 +159,9 @@ public class GoodsDetailsActivity extends AppCompatActivity {
     }
 
     private void setCollectStatus() {
-        if (isCollect){
+        if (isCollect) {
             ivGoodCollect.setImageResource(R.mipmap.bg_collect_out);
-        }else {
+        } else {
             ivGoodCollect.setImageResource(R.mipmap.bg_collect_in);
         }
     }
@@ -171,7 +172,7 @@ public class GoodsDetailsActivity extends AppCompatActivity {
             model.isCollect(this, goodsId, user.getMuserName(), new OnCompleteListener<MessageBean>() {
                 @Override
                 public void onSuccess(MessageBean result) {
-                    L.e(TAG,"result===>"+result);
+                    L.e(TAG, "result===>" + result);
                     if (result != null && result.isSuccess()) {
                         isCollect = true;
                     } else {
@@ -187,23 +188,29 @@ public class GoodsDetailsActivity extends AppCompatActivity {
             });
         }
     }
+
     @OnClick(R.id.iv_good_cart)
-    public void addCart(){
-        User user=FulicenterApplication.getUser();
-        userModel=new ModelUser();
-        userModel.updateCart(this, I.ACTION_CART_ADD, user.getMuserName(), goodsId, 1, 0, new OnCompleteListener<MessageBean>() {
-            @Override
-            public void onSuccess(MessageBean result) {
-                if (result!=null && result.isSuccess()){
-                    CommonUtils.showLongToast(R.string.add_goods_success);
+    public void addCart() {
+        User user = FulicenterApplication.getUser();
+        if (user != null) {
+
+            userModel = new ModelUser();
+            userModel.updateCart(this, I.ACTION_CART_ADD, user.getMuserName(), goodsId, 1, 0, new OnCompleteListener<MessageBean>() {
+                @Override
+                public void onSuccess(MessageBean result) {
+                    if (result != null && result.isSuccess()) {
+                        CommonUtils.showLongToast(R.string.add_goods_success);
+                    }
                 }
-            }
 
-            @Override
-            public void onError(String error) {
+                @Override
+                public void onError(String error) {
 
-            }
-        });
+                }
+            });
+        } else {
+            MFGT.gotoLogin(this);
+        }
     }
 
 
