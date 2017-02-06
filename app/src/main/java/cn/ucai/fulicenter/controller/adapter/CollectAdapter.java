@@ -39,10 +39,10 @@ public class CollectAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    public CollectAdapter(Context mContext, ArrayList<CollectBean> mList) {
-        this.mContext = mContext;
+    public CollectAdapter(Context context, ArrayList<CollectBean> list) {
+        this.mContext = context;
         this.mList = new ArrayList<>();
-        mList.addAll(mList);
+        mList.addAll(list);
     }
 
     @Override
@@ -66,6 +66,7 @@ public class CollectAdapter extends RecyclerView.Adapter {
             CollectViewHolder vh = (CollectViewHolder) holder;
             ImageLoader.downloadImg(mContext, vh.ivGoodsThumb, mList.get(position).getGoodsThumb());
             vh.tvGoodsName.setText(mList.get(position).getGoodsName());
+           // vh.itemView.setTag(position);
             vh.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

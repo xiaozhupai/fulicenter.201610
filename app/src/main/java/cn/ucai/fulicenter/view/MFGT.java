@@ -73,6 +73,7 @@ public class MFGT {
     }
 
     public static void gotoCollects(Activity activity) {
+
         startActivity(activity, CollectsActivity.class);
     }
 }

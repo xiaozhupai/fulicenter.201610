@@ -71,6 +71,8 @@ public class GoodsAdapter extends RecyclerView.Adapter {
             ImageLoader.downloadImg(mContext, vh.ivGoodsThumb, mList.get(position).getGoodsThumb());
             vh.tvGoodsName.setText(mList.get(position).getGoodsName());
             vh.tvGoodsPrice.setText(mList.get(position).getCurrencyPrice());
+            //vh.itemView.setTag(position);
+
             vh.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
